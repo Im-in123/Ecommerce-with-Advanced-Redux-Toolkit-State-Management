@@ -34,4 +34,23 @@ sequelizeUsers
 	})
 	.catch((err) => console.error("Unable to connect to users database: ", err));
 
-export { sequelizeBlogs, sequelizeUsers };
+	// Define the database connection for the products database
+const sequelizeProducts = new Sequelize({
+	database: "products",
+	dialect: "sqlite",
+	storage: "./database/products.sqlite",
+	logging: false,
+  });
+  
+  // Authenticate and sync the products database
+  sequelizeProducts
+	.authenticate()
+	.then(async () => {
+	  await sequelizeProducts
+		.sync({ alter: true })
+		.then(() => console.log("Database is synchronised for products db"));
+	  console.log("Connection established for products db");
+	})
+	.catch((err) => console.error("Unable to connect to products database: ", err));
+  
+export { sequelizeBlogs, sequelizeUsers, sequelizeProducts };

@@ -3,17 +3,21 @@ import cookieParser from "cookie-parser";
 import authRoute from "./routes/authenticationRoutes.js";
 import morgan from "morgan";
 import accessControlRoutes from "./routes/authorisationRoutes.js";
+import productControlRoutes from "./routes/productRoutes.js"
+
 import dotenv from "dotenv";
 dotenv.config();
 const config = process.env;
 
 import cors from "cors";
+import adminRoutes from "./routes/adminRoutes.js";
 
 const PORT = 4040;
 const app = express();
 
 app.use(morgan("dev"));
 app.use(cookieParser(config.TOKEN));
+app.use("/uploads", express.static("uploads"));
 
 const corsOptions = {
 	// Add your address here i.e. your forwarded address from a cloud environment
@@ -24,9 +28,10 @@ const corsOptions = {
 		"http://localhost:4173",
 		"http://[::1]:4173",
 		"http://[::1]:5173",
+		"https://reimagined-guide-q6x74vpgrr4f99q-5173.app.github.dev",
 	],
 	credentials: true, //included credentials as true
-	preflightContinue: true,
+	preflightContinue: false,
 };
 
 app.use(cors(corsOptions));
@@ -60,7 +65,8 @@ app.options("*", cors(corsOptions));
 
 app.use("/api/auth/", authRoute);
 app.use("/api/posts/", accessControlRoutes);
-
+app.use("/api/products/", productControlRoutes);
+app.use("/api/admin/", adminRoutes);
 try {
 	app.listen(PORT, () =>
 		console.log(`Connected and listening on port ${PORT}.`),

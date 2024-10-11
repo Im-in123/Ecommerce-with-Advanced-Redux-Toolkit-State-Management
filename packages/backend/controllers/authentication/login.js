@@ -41,11 +41,11 @@ const login = async (req, res) => {
 		}
 
 		const token = jsonwebtoken.sign(
-			{ email: user.email, username: user.username, userId: user.id },
+			{ email: user.email, username: user.username, userId: user.id, role: user.role }, // Include role in the token
 			config.TOKEN,
 			{
 				expiresIn: 86400,
-			},
+			}
 		);
 		
 		const createdAt = new Date(Date.now());

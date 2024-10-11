@@ -6,6 +6,8 @@ import loadUserPosts from "../controllers/access/controls/loadUserPosts.js";
 import tokenVerification from "../security/authentication.js";
 import allPosts from "../controllers/access/controls/allPosts.js";
 
+
+
 const accessControlRoutes = Router({ mergeParams: true });
 
 accessControlRoutes.post("/post/create", tokenVerification, (req, res) =>
@@ -17,6 +19,7 @@ accessControlRoutes.delete("/post/delete", tokenVerification, (req, res) =>
 accessControlRoutes.put("/post/update", tokenVerification, (req, res) =>
 	updatePost(req, res),
 );
+
 
 // no auth needed routes
 accessControlRoutes.get("/user/:username", (req, res) =>

@@ -27,9 +27,11 @@ UserModel.init(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
+		
 		role: {
-			type: DataTypes.STRING,
-			allowNull: false,
+			type: String,
+			enum: ['admin', 'seller', 'shopper'],
+			default: 'shopper' // Default role is shopper
 		},
 	},
 	{

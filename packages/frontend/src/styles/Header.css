@@ -1,0 +1,51 @@
+/* Header.css */
+.header {
+    background-color: #4A90E2; /* Cool blue */
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between links and auth links */
+    width: 100%; /* Ensure navbar takes the full width */
+    max-width: 1200px; /* Optional: max width for alignment */
+    margin: 0 auto; /* Center the navbar */
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center; /* Align items in the center */
+}
+
+.cart-link {
+    display: flex;
+    align-items: center; /* Align items in the center */
+    margin-left: 15px; /* Space before the cart icon */
+}
+
+.cart-icon {
+    font-size: 20px; /* Size of the cart icon */
+     
+}
+
+.cart-count {
+    margin-left: 5px; /* Space between icon and count */
+    font-weight: bold; /* Make count stand out */
+    color: orange;
+}

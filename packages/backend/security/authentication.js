@@ -10,6 +10,7 @@ const tokenVerification = (req, res, next) => {
 	const [, token] = req.headers.authorization.split(" ");
 
 	if (!token) {
+		console.log("token not provided..")
 		return res.status(403).send({
 			ok: false,
 			message: "Token is not provided",
