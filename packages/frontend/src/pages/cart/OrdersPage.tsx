@@ -7,7 +7,8 @@ import { BASE_URL } from '../../constants';
 
 const OrdersPage = () => {
     const { data: orders, error, isLoading } = useFetchOrdersQuery();
-console.log("orders:", orders)
+    console.log("orders:", orders); // Debugging: Log the orders data
+
     return (
         <>
             <Header />
@@ -58,8 +59,8 @@ console.log("orders:", orders)
                                         </td>
                                         <td>${order.totalAmount.toFixed(2)}</td>
                                         <td className={`status ${order.status.toLowerCase()}`}>{order.status}</td>
-                                        <td>{new Date(order.orderTime).toLocaleString()}</td> {/* Display Order Time */}
-                                        <td>{order.completedTime ? new Date(order.completedTime).toLocaleString() : 'N/A'}</td> {/* Display Completed Time */}
+                                        <td>{new Date(order.createdAt).toLocaleString()}</td> {/* Display Order Time */}
+                                        <td>{order.updatedAt ? new Date(order.updatedAt).toLocaleString() : 'N/A'}</td> {/* Display Completed Time */}
                                     </tr>
                                 ))}
                             </tbody>

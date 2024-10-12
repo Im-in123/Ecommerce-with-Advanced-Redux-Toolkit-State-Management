@@ -61,9 +61,25 @@
     color: red;
 }
 
+/* New styles for Order Time and Completed Time columns */
+.orders-table .order-time,
+.orders-table .completed-time {
+    width: 150px; /* Adjust width as needed */
+    text-align: center; /* Center align for better readability */
+}
+
 .empty-orders {
     text-align: center;
     color: #888;
     font-size: 18px;
     margin-top: 40px;
+}
+
+/* Optional: Style for loading and error messages */
+.loading,
+.error {
+    text-align: center;
+    color: #ff6b6b; /* Error color */
+    margin-top: 20px;
+    font-size: 18px;
 }

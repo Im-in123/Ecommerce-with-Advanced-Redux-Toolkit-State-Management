@@ -5,11 +5,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-content">
                 <p>&copy; 2024 TravisCommerce. All Rights Reserved.</p>
-                <div className="social-links">
-                    <a href="#facebook">Facebook</a>
-                    <a href="#twitter">Twitter</a>
-                    <a href="#instagram">Instagram</a>
-                </div>
+                
             </div>
         </footer>
     );
