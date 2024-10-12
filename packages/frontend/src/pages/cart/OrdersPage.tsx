@@ -7,27 +7,16 @@ import { BASE_URL } from '../../constants';
 
 const OrdersPage = () => {
     const { data: orders, error, isLoading } = useFetchOrdersQuery();
-    if (isLoading) {
-        return (
-            <div className="loading"> 
-               Loading your orders 
-            </div>
-        );
-    }
-    if (error) {
-        return <div className="error">Error loading orders: {error?.message }.</div>;
-    }
+console.log("orders:", orders)
     return (
         <>
             <Header />
             <div className="orders-page">
                 <h1>Your Orders</h1>
 
-                {/* Handle loading state */}
-                {isLoading && <div>Loading...</div>}
-
-                {/* Handle error state */}
-                {error && <div>Error loading orders: {error.message}</div>}
+                {/* Handle loading and error states within the main return */}
+                {isLoading && <div className="loading">Loading your orders...</div>}
+                {error && <div className="error">Error loading orders: {error?.message}.</div>}
 
                 {/* Display orders when available */}
                 {!isLoading && !error && (
@@ -42,6 +31,8 @@ const OrdersPage = () => {
                                     <th>Quantity</th>
                                     <th>Total Price</th>
                                     <th>Status</th>
+                                    <th>Order Time</th> {/* Add Order Time header */}
+                                    <th>Completed Time</th> {/* Add Completed Time header */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,6 +58,8 @@ const OrdersPage = () => {
                                         </td>
                                         <td>${order.totalAmount.toFixed(2)}</td>
                                         <td className={`status ${order.status.toLowerCase()}`}>{order.status}</td>
+                                        <td>{new Date(order.orderTime).toLocaleString()}</td> {/* Display Order Time */}
+                                        <td>{order.completedTime ? new Date(order.completedTime).toLocaleString() : 'N/A'}</td> {/* Display Completed Time */}
                                     </tr>
                                 ))}
                             </tbody>

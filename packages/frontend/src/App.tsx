@@ -1,21 +1,15 @@
 import Login from "./pages/auth/Login";
-
 import { useAppSelector } from "./store";
-import UserSpecificPosts from "./pages/posts/UserSpecificPosts";
 import { RouterProvider } from "react-router";
 import { createBrowserRouter } from "react-router-dom";
 
 import NotFound from "./pages/404";
 import Register from "./pages/auth/Register";
-
-// Import product components
 import AllProducts from "./pages/products/AllProducts";
 import CreateProduct from "./pages/products/CreateProduct";
-
 import UpdateProduct from "./pages/products/UpdateProduct";
-
 import "./App.css";
-import type { AuthState, UserResponse } from "./services/auth/types";
+import type { AuthState } from "./services/auth/types";
 import ProductDetail from "./pages/products/ProductDetail";
 import ProductList from "./pages/products/ProductList";
 import Admin from "./pages/admin/Admin";
@@ -24,42 +18,29 @@ import AdminUsersList from "./pages/admin/AdminUsersList";
 import AdminCreateUser from "./pages/admin/AdminCreateUser";
 import AdminUpdateUser from "./pages/admin/AdminUpdateUser";
 import LandingPage from "./pages/LandingPage";
-
-import CartPage from "./pages/cart/CartPage"
+import CartPage from "./pages/cart/CartPage";
 import OrdersPage from "./pages/cart/OrdersPage";
 
-
 const App = () => {
-    let authState: AuthState = {
-        user: null,
-        token: null
-    };
-
+    // Get user and token from Redux state
     const { user, token } = useAppSelector((state) => state.auth);
-    const userSession = sessionStorage.getItem("user");
-    const response: UserResponse = userSession ? JSON.parse(userSession) : null;
-    if (sessionStorage.getItem("isAuthenticated") === "true" && response !== null) {
-        authState = {
-            user: {
-                username: response.username,
-                id: response.userId,
-                email: response.email,
-                role: response.role
-            } ?? user,
-            token: response.token ?? token
-        };
-    }
-    const isAuthenticated = authState.user !== null && authState.token !== null;
+    
+    // Determine authentication state
+    const isAuthenticated = !!(user && token);
+
+    // Define authState based on Redux state
+    const authState: AuthState = {
+        user,
+        token,
+    };
 
     const router = createBrowserRouter([
         {
             path: "/",
             element: <LandingPage authState={authState} isAuthenticated={isAuthenticated} />,
-          
         },
         {
             path: "/auth/",
-            // element: </>,
             children: [
                 {
                     path: "register",
@@ -71,7 +52,6 @@ const App = () => {
                 },
             ],
         },
-        
         {
             path: "/products/",
             element: <AllProducts isAuthenticated={isAuthenticated} authState={authState} />,
@@ -86,7 +66,7 @@ const App = () => {
                 },
                 {
                     path: ":productId", // Route for product details
-                    element: <ProductDetail isAuthenticated={isAuthenticated} authState={authState}/>,
+                    element: <ProductDetail isAuthenticated={isAuthenticated} authState={authState} />,
                 },
                 {
                     path: "user/:username/product/edit/:productId", 
@@ -119,13 +99,12 @@ const App = () => {
                 },
                 {
                     path: ":userId", 
-                    element: <AdminGetUserDetail isAuthenticated={isAuthenticated} authState={authState}/>,
+                    element: <AdminGetUserDetail isAuthenticated={isAuthenticated} authState={authState} />,
                 },
                 {
                     path: ":userId/update",
                     element: <AdminUpdateUser isAuthenticated={isAuthenticated} authState={authState} />,
                 },
-               
             ],
         },
         {
@@ -137,7 +116,6 @@ const App = () => {
     return (
         <div>  
             <RouterProvider router={router} />
-            
         </div>
     );
 };
