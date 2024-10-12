@@ -14,11 +14,12 @@
     color: #333; /* Dark text color */
 }
 
-.product-image {
+.product-detail .product-image {
     width: 100%; /* Make image responsive */
     height: auto; /* Maintain aspect ratio */
     border-radius: 8px; /* Rounded corners for the image */
     margin-bottom: 15px; /* Space below the image */
+    max-height: 300px;
 }
 
 .product-price,

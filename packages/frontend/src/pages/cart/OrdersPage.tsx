@@ -7,7 +7,16 @@ import { BASE_URL } from '../../constants';
 
 const OrdersPage = () => {
     const { data: orders, error, isLoading } = useFetchOrdersQuery();
-
+    if (isLoading) {
+        return (
+            <div className="loading"> 
+               Loading your orders 
+            </div>
+        );
+    }
+    if (error) {
+        return <div className="error">Error loading orders: {error?.message }.</div>;
+    }
     return (
         <>
             <Header />

@@ -12,18 +12,18 @@ const ProductList = ({ isAuthenticated, authState }: { isAuthenticated: boolean;
     if (isLoading) {
         return (
             <div className="loading"> 
-                {authState?.user?.role === "seller" ? "Loading your products..." : "Loading products..." }
+                {authState?.user?.role === "seller" && isAuthenticated? "Loading your products..." : "Loading products..." }
             </div>
         );
     }
 
     if (error) {
-        return <div className="error">Error loading products: {error?.message || "Unexpected error occurred."}.</div>;
+        return <div className="error">Error loading products: {error?.message }.</div>;
     }
 
     return (
         <>
-         <h1>{authState?.user?.role === "seller" ? "Your Products" : "Products"}</h1>
+         <h1>{authState?.user?.role === "seller" ? "Your Seller Products" : "Products"}</h1>
          {products.length === 0 && <p>No Products Found!</p>}
         <div className="product-list">
            

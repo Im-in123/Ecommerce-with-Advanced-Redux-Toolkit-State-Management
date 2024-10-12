@@ -6,6 +6,7 @@ import { addToCart } from "../../services/cart/cartSlice"; // Import the addToCa
 import DeleteProduct from "./DeleteProduct"; // Importing the DeleteProduct component
 import "../../styles/ProductDetail.css"; // Import the styles
 import { BASE_URL } from "../../constants";
+import { toast } from 'react-toastify';
 
 const ProductDetail = ({ isAuthenticated, authState }) => {
     const { productId } = useParams();
@@ -31,6 +32,7 @@ const ProductDetail = ({ isAuthenticated, authState }) => {
     // Function to handle adding product to cart
     const handleAddToCart = () => {
         dispatch(addToCart({ productId: product.id, name: product.name, price: product.price, quantity: product.quantity, order_quantity:1, imageUrl:product.imageUrl }));
+        toast.success("Added to cart!");
     };
 
     return (
