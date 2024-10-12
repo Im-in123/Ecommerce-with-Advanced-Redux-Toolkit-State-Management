@@ -7,6 +7,7 @@ import authReducer from "./services/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { createListenerMiddleware } from "@reduxjs/toolkit"; 
+import { cartSliceAPI } from './services/cart/cartSliceAPI';
 
 const authListener = createListenerMiddleware();
 
@@ -15,7 +16,8 @@ const store = configureStore({
         [blogApi.reducerPath]: blogApi.reducer,
         [authEcomerceApi.reducerPath]: authEcomerceApi.reducer,
         [productApi.reducerPath]: productApi.reducer,
-        cart: cartReducer, // Use the cart reducer here without `.reducerPath`
+        [cartSliceAPI.reducerPath]: cartSliceAPI.reducer,
+        cart: cartReducer, // Use the cart reducer
         auth: authReducer, // Use the plain auth reducer
     },
     middleware: (getDefaultMiddleware) => {
@@ -23,6 +25,7 @@ const store = configureStore({
             .concat(authEcomerceApi.middleware)
             .concat(blogApi.middleware)
             .concat(productApi.middleware)
+            .concat(cartSliceAPI.middleware)
             .concat(authListener.middleware);
     },
 });

@@ -26,7 +26,9 @@ import AdminUpdateUser from "./pages/admin/AdminUpdateUser";
 import LandingPage from "./pages/LandingPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import CartPage from "./pages/cart/CartPage";
+import CartPage from "./pages/cart/CartPage"
+import OrdersPage from "./pages/cart/OrdersPage";
+
 
 const App = () => {
     let authState: AuthState = {
@@ -99,6 +101,10 @@ const App = () => {
         {
             path: "/cart",
             element: <CartPage isAuthenticated={isAuthenticated} authState={authState} />,
+        },
+        {
+            path: "/orders",
+            element: <OrdersPage isAuthenticated={isAuthenticated} authState={authState} />,
         },
         {
             path: "/admin/",

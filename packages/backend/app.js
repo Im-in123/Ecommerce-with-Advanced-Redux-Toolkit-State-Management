@@ -4,6 +4,7 @@ import authRoute from "./routes/authenticationRoutes.js";
 import morgan from "morgan";
 import accessControlRoutes from "./routes/authorisationRoutes.js";
 import productControlRoutes from "./routes/productRoutes.js"
+import orderRoutes from "./routes/orderRoutes.js";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -17,7 +18,6 @@ const app = express();
 
 app.use(morgan("dev"));
 app.use(cookieParser(config.TOKEN));
-app.use("/uploads", express.static("uploads"));
 
 const corsOptions = {
 	// Add your address here i.e. your forwarded address from a cloud environment
@@ -35,6 +35,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use("/uploads", express.static("uploads"));
 
 app.use((req, res, next) => {
 	res.header(
@@ -67,6 +68,7 @@ app.use("/api/auth/", authRoute);
 app.use("/api/posts/", accessControlRoutes);
 app.use("/api/products/", productControlRoutes);
 app.use("/api/admin/", adminRoutes);
+app.use("/api/orders/", orderRoutes); //
 try {
 	app.listen(PORT, () =>
 		console.log(`Connected and listening on port ${PORT}.`),

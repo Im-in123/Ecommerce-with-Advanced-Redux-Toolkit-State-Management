@@ -1,7 +1,7 @@
 // models/ProductModel.js
 
 import { DataTypes, Model } from "sequelize";
-import { sequelizeUsers } from "../database/db.js"; // Adjust based on your database setup
+import { sequelizeProducts } from "../database/db.js"; // Adjust based on your database setup
 
 class ProductModel extends Model {}
 
@@ -58,8 +58,8 @@ ProductModel.init(
     },
   },
   {
-    sequelize: sequelizeUsers, 
-    modelName: "Product", // Updated to singular for best practices
+    sequelize: sequelizeProducts, 
+    modelName: "Product", 
     timestamps: true, // Automatically manage createdAt and updatedAt fields
   }
 );

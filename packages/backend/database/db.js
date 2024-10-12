@@ -52,5 +52,25 @@ const sequelizeProducts = new Sequelize({
 	  console.log("Connection established for products db");
 	})
 	.catch((err) => console.error("Unable to connect to products database: ", err));
-  
-export { sequelizeBlogs, sequelizeUsers, sequelizeProducts };
+
+	
+// Define the database connection for the orders database
+const sequelizeOrders = new Sequelize({
+    database: "orders",
+    dialect: "sqlite",
+    storage: "./database/orders.sqlite",
+    logging: false,
+});
+
+// Authenticate and sync the orders database
+sequelizeOrders
+    .authenticate()
+    .then(async () => {
+        await sequelizeOrders
+            .sync({ alter: true }) // You can remove this line if you don't want to sync the orders table schema
+            .then(() => console.log("Database is synchronised for orders db"));
+        console.log("Connection established for orders db");
+    })
+    .catch((err) => console.error("Unable to connect to orders database: ", err));
+
+export { sequelizeBlogs, sequelizeUsers, sequelizeProducts, sequelizeOrders };

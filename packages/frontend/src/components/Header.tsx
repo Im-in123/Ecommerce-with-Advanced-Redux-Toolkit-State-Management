@@ -45,6 +45,11 @@ const Header = () => {
                         <Link to="/admin">Admin</Link>
                     </>
                 )}
+                 {isAuthenticated && authState.user.role === "shopper" && (
+                    <>
+                        <Link to="/orders">Orders</Link>
+                    </>
+                )}
                 <Link to="/contact">Contact</Link>
                 <div className="auth-links">
                     {isAuthenticated ? (
