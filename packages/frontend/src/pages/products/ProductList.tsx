@@ -3,11 +3,21 @@ import { useGetAllProductsQuery, useGetOwnProductsQuery } from "../../services/p
 import { Link } from "react-router-dom";
 import "../../styles/ProductList.css"; 
 import { BASE_URL } from "../../constants";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../services/cart/cartSlice"; // Import the addToCart action
+import { toast } from 'react-toastify';
 
 const ProductList = ({ isAuthenticated, authState }: { isAuthenticated: boolean; authState: any }) => {
     const { data: products, error, isLoading } = 
         authState?.user?.role === "seller" ? useGetOwnProductsQuery() : useGetAllProductsQuery();  
     console.log(authState);
+    const dispatch = useDispatch();
+
+   // Function to handle adding product to cart
+   const handleAddToCart = (product) => {
+    dispatch(addToCart({ productId: product.id, name: product.name, price: product.price, quantity: product.quantity, order_quantity:1, imageUrl:product.imageUrl }));
+    toast.success("Added to cart!");
+};
 
     if (isLoading) {
         return (
@@ -38,6 +48,7 @@ const ProductList = ({ isAuthenticated, authState }: { isAuthenticated: boolean;
                         <h2>{product.name}</h2>
                     </Link>
                     <p className="product-price">${product.price}</p>
+                    <button className="cart-button" onClick={()=>handleAddToCart(product)}>Add to Cart</button>
                 </div>
             ))}
         </div>

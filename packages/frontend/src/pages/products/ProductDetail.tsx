@@ -4,7 +4,7 @@ import { useGetProductQuery } from "../../services/products/productSlice";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../services/cart/cartSlice"; // Import the addToCart action
 import DeleteProduct from "./DeleteProduct"; // Importing the DeleteProduct component
-import "../../styles/ProductDetail.css"; // Import the styles
+import "../../styles/ProductDetail.css";  
 import { BASE_URL } from "../../constants";
 import { toast } from 'react-toastify';
 

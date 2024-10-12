@@ -27,9 +27,9 @@ const LandingPage = ({
             <Header />
             <div className="landing-page">
                 <section className="hero-section">
-                    <h1>Welcome to Our Platform</h1>
+                    <h1>Welcome to TravisCommerce</h1>
                     <p>Your one-stop shop for all your needs</p>
-                    <button>Shop Now</button>
+                    <button onClick={()=>navigate('/auth/login')}>Shop Now</button>
                 </section>
            
                 <section className="about-section">
