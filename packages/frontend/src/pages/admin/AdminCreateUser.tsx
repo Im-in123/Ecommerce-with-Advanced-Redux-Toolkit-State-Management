@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAdminCreateUserMutation } from "../../services/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import "../../styles/AdminCreateUser.css"; 
+import { toast } from 'react-toastify';
 
 const AdminCreateUser = ({ isAuthenticated, authState }: { isAuthenticated: boolean; authState: any }) => {
     const navigate = useNavigate();
@@ -25,9 +26,12 @@ const AdminCreateUser = ({ isAuthenticated, authState }: { isAuthenticated: bool
         e.preventDefault();
         try {
             await createUser(formState).unwrap();
+            toast.success("Created user sucessfully!")
             navigate("/admin");
         } catch (error) {
             console.error("Error creating user:", error);
+            toast.error(error?.data?.error)
+            toast.error(error?.data?.message )
         }
     };
 

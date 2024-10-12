@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useAdminGetUsersQuery } from "../../services/auth/authSlice";
 import { Link } from "react-router-dom";
 import "../../styles/AdminUsersList.css"; // Importing the CSS file
+import { toast } from 'react-toastify';
 
 const AdminUsersList = ({ isAuthenticated, authState }: { isAuthenticated: boolean; authState: any }) => {
     const { data: users, error, refetch, isLoading } = useAdminGetUsersQuery();
@@ -18,7 +19,7 @@ const AdminUsersList = ({ isAuthenticated, authState }: { isAuthenticated: boole
 
     // Handle error state
     if (error) {
-        return <div>Error fetching users: {error.data?.message || "Unexpected error occurred."}</div>;
+        return <div>Error fetching users: {error?.message  || "Unexpected error occurred "}</div>;
     }
 
     // Handle unauthorized access

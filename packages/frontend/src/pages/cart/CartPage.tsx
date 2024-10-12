@@ -7,6 +7,7 @@ import "../../styles/CartPage.css";
 import { BASE_URL } from '../../constants';
 import { useCheckoutMutation } from '../../services/cart/cartSliceAPI'; // Import the checkout mutation
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const CartPage = () => {
     const dispatch = useAppDispatch();
@@ -19,11 +20,13 @@ const CartPage = () => {
     const handleCheckout = async () => {
         try {
             await checkout(cartItems).unwrap(); // Submit the cart items
-            alert('Checkout successful!');
+            toast.success('Checkout successful!');
             dispatch(clearCart()); // Clear the cart after successful checkout
             navigate('/orders');
         } catch (error) {
-            alert('Checkout failed. Please try again.');
+             
+            toast.error(error?.data?.error)
+            toast.error(error?.data?.message )
         }
     };
 

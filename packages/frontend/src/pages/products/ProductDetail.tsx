@@ -21,7 +21,7 @@ const ProductDetail = ({ isAuthenticated, authState }) => {
     }, [productId, refetch]);
 
     if (isLoading) return <div className="loading">Loading product details...</div>;
-    if (error) return <div className="error">Error loading product details.</div>;
+    if (error) return <div className="error">Error loading product details.: {error?.message }</div>;
 
     // Function to handle redirect to edit page
     const handleEdit = () => {

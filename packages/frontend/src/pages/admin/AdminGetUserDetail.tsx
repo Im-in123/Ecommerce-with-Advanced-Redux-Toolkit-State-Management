@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useAdminGetUserQuery } from "../../services/auth/authSlice";
 import AdminDeleteUser from "./AdminDeleteUser"; // Importing the AdminDeleteUser component
 import "../../styles/AdminGetUserDetail.css"; // Import the CSS file
+import { toast } from 'react-toastify';
 
 const AdminGetUserDetail = ({ isAuthenticated, authState }) => {
     const { userId } = useParams<{ userId: string }>();
@@ -19,7 +20,7 @@ const AdminGetUserDetail = ({ isAuthenticated, authState }) => {
     }
 
     if (error) {
-        return <div>Error fetching user details: {error.data?.message || "Unexpected error occurred."}</div>;
+        return <div>Error fetching user details: {error?.message  || "Unexpected error occurred."}</div>;
     }
 
     if (!isAuthenticated && authState?.user?.role !== "admin") {

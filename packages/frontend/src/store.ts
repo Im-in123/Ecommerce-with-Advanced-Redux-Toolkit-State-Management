@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { blogApi } from "./services/posts/blogSlice";
+
 import { authEcomerceApi, refreshAuthentication } from "./services/auth/authSlice";
 import { productApi } from "./services/products/productSlice";
-import cartReducer from "./services/cart/cartSlice"; // Import cart reducer
+import cartReducer from "./services/cart/cartSlice"; 
 import authReducer from "./services/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { setupListeners } from "@reduxjs/toolkit/query";
@@ -13,7 +13,7 @@ const authListener = createListenerMiddleware();
 
 const store = configureStore({
     reducer: {
-        [blogApi.reducerPath]: blogApi.reducer,
+      
         [authEcomerceApi.reducerPath]: authEcomerceApi.reducer,
         [productApi.reducerPath]: productApi.reducer,
         [cartSliceAPI.reducerPath]: cartSliceAPI.reducer,
@@ -23,7 +23,6 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) => {
         return getDefaultMiddleware()
             .concat(authEcomerceApi.middleware)
-            .concat(blogApi.middleware)
             .concat(productApi.middleware)
             .concat(cartSliceAPI.middleware)
             .concat(authListener.middleware);

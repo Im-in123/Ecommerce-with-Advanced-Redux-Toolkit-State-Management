@@ -5,6 +5,8 @@ import type { AuthState, LoginRequest } from "../../services/auth/types";
 import "../../styles/Login.css"
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { toast } from 'react-toastify';
+
 const Login = ({
 	isAuthenticated,
 	authState,
@@ -38,13 +40,14 @@ const Login = ({
                                             	replace: true,
                                         	});
                                     	}
-                                    	alert("Invalid credentials!");
+                                    	console.log("data error msg:", data)
+										toast.error("Invalid credentials!");
                                 	})
                                 	.catch(() =>
-                                    	alert("Server error! Please file a bug report!"),
+                                    	toast.error("Server error! Please file a bug report!"),
                                 	);
                         	} catch (err) {
-                            	alert(`Failed to login; got ${err}`);
+                            	toast.error(`Failed to login; got ${err}`);
                         	}
                     	}}
                 	>

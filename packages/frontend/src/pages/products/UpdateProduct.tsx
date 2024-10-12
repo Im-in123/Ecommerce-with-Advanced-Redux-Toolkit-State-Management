@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGetProductQuery, useUpdateProductMutation } from "../../services/products/productSlice";
 import "../../styles/UpdateProduct.css"; // Importing the CSS file
 import { ProductCreateRequest } from "../../services/products/types";
+import { toast } from 'react-toastify';
 
 const UpdateProduct = ({ isAuthenticated }) => {
     const { productId } = useParams(); // Get productId from URL
@@ -62,9 +63,12 @@ const UpdateProduct = ({ isAuthenticated }) => {
 
         try {
             await updateProduct({ productId, formData }).unwrap();
+            toast.success("Product updated successfully");
             navigate(`/products/${productId}`);
         } catch (error) {
             console.error("Failed to update product", error);
+            toast.error(error?.data?.error)
+            toast.error(error?.data?.message )
         }
     };
 

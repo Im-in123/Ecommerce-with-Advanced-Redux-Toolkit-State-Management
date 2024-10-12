@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import type { AuthState } from "../../services/auth/types";
 import type { ErrorResponse } from "../../services/error-types";
 import "../../styles/CreateProduct.css";
+import { toast } from 'react-toastify';
 
 const CreateProduct = ({
     isAuthenticated,

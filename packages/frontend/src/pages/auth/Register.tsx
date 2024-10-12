@@ -5,6 +5,7 @@ import type { RegisterRequest } from "../../services/auth/types";
 import "../../styles/Register.css"
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { toast } from 'react-toastify';
 
 const Register = ({
 	isAuthenticated,
@@ -36,13 +37,13 @@ const Register = ({
                                             	replace: true,
                                         	});
                                     	}
-                                    	alert("Invalid credentials!");
+										toast.error("Invalid credentials!");
                                 	})
                                 	.catch(() =>
-                                    	alert("Server error! Please file a bug report!"),
+										toast.error("Server error! Please file a bug report!"),
                                 	);
                         	} catch (err) {
-                            	alert(`Failed to register; got ${err}`);
+								toast.error(`Failed to register; got ${err}`);
                         	}
                     	}}
                 	>

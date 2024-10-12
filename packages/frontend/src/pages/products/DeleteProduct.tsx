@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDeleteProductMutation } from "../../services/products/productSlice";
 import "../../styles/DeleteProduct.css"; // Importing the CSS file
+import { toast } from 'react-toastify';
 
 const DeleteProduct = ({ productId }) => {
     const navigate = useNavigate();
@@ -13,11 +14,15 @@ const DeleteProduct = ({ productId }) => {
         if (confirmDelete) {
             try {
                 await deleteProduct({ productId }).unwrap();
-                console.log("Product deleted successfully");
-                // Redirect to the products list page after deletion
+               
+                toast.success("Product deleted successfully");
+               
                 navigate("/products");
             } catch (error) {
                 console.error("Failed to delete the product:", error);
+                toast.error(error?.data?.error)
+                toast.error(error?.data?.message )
+                
             }
         }
     };

@@ -23,7 +23,7 @@ const adminUpdateUser = async (req, res) => {
         } catch (err) {
             return res.status(401).json({
                 error: "Unauthorized",
-                message: "Invalid token",
+                message: "Invalid cookie or cookie not found!",
                 status: 401,
                 ok: false,
             });

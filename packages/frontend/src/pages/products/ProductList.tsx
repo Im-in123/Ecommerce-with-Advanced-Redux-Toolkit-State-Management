@@ -18,7 +18,7 @@ const ProductList = ({ isAuthenticated, authState }: { isAuthenticated: boolean;
     }
 
     if (error) {
-        return <div className="error">Error loading products.</div>;
+        return <div className="error">Error loading products: {error?.message || "Unexpected error occurred."}.</div>;
     }
 
     return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import "../styles/Header.css"; // Import your CSS styles
-import { AuthState, UserResponse } from '../services/auth/types'; // Adjust the import path as necessary
-import { useLogoutMutation } from "../services/auth/authSlice"; // Import the logout mutation
-import { useAppSelector } from "../store"; // Hook to access the Redux store
-import { selectCartCount } from "../services/cart/cartSlice"; // Import the cart count selector
-import { FaShoppingCart } from 'react-icons/fa'; // Import cart icon from React Icons
+import "../styles/Header.css"; 
+import { AuthState, UserResponse } from '../services/auth/types';
+import { useLogoutMutation } from "../services/auth/authSlice";
+import { useAppSelector } from "../store"; 
+import { selectCartCount } from "../services/cart/cartSlice"; 
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Header = () => {
     let authState: AuthState = {
@@ -39,10 +39,15 @@ const Header = () => {
         <header className="header">
             <nav className="navbar">
                 <Link to="/">Home</Link>
-                <Link to="/products">Products</Link>
+              
+                {isAuthenticated && authState.user.role !== "admin" && (
+                    <>
+                        <Link to="/products">Products</Link>
+                    </>
+                )}
                 {isAuthenticated && authState.user.role === "admin" && (
                     <>
-                        <Link to="/admin">Admin</Link>
+                        <Link to="/admin">users</Link>
                     </>
                 )}
                  {isAuthenticated && authState.user.role === "shopper" && (
@@ -63,7 +68,7 @@ const Header = () => {
                                 </Link>
                             )}
                             <button onClick={() => {
-                                logout(); // Trigger logout
+                                logout();
                                 navigate("/", {
                                     replace: true, // Replace the current entry in the history stack
                                 });

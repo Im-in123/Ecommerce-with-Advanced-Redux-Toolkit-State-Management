@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAdminDeleteUserMutation } from "../../services/auth/authSlice";
 import "../../styles/AdminDeleteUser.css"; // Add the CSS file
+import { toast } from 'react-toastify';
 
 const AdminDeleteUser = ({ userId }) => {
     const [deleteUser, { isLoading: isDeleting }] = useAdminDeleteUserMutation();
@@ -12,10 +13,12 @@ const AdminDeleteUser = ({ userId }) => {
         if (confirmDelete) {
             try {
                 await deleteUser(userId).unwrap();
-                console.log("User deleted successfully");
+                toast.success("User deleted successfully");
                 navigate("/admin");
             } catch (error) {
                 console.error("Failed to delete the user:", error);
+                toast.error(error?.data?.error)
+                toast.error(error?.data?.message )
             }
         }
     };

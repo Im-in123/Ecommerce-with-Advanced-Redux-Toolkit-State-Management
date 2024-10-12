@@ -5,6 +5,7 @@ import {
     useAdminUpdateUserMutation,
 } from "../../services/auth/authSlice";
 import "../../styles/AdminUpdateUser.css"; // Importing the CSS file
+import { toast } from 'react-toastify';
 
 const AdminUpdateUser = () => {
     const { userId } = useParams<{ userId: string }>();
@@ -35,9 +36,12 @@ const AdminUpdateUser = () => {
         e.preventDefault();
         try {
             await updateUser({ userId, ...formState }).unwrap();
+            toast.success("Updated user sucessfully!")
             navigate(`/admin/${userId}`);
         } catch (error) {
             console.error("Error updating user:", error);
+            toast.error(error?.data?.error)
+            toast.error(error?.data?.message )
         }
     };
 

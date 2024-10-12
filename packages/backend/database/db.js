@@ -1,22 +1,5 @@
 import { Sequelize } from "sequelize";
 
-const sequelizeBlogs = new Sequelize({
-	database: "blogs",
-	dialect: "sqlite",
-	storage: "./database/blogs.sqlite",
-	logging: false,
-});
-
-sequelizeBlogs
-	.authenticate()
-	.then(async () => {
-		await sequelizeBlogs
-			.sync({ alter: true })
-			.then(() => console.log("Database is synchronised for blogs db"));
-		console.log("Connection established for blogs db");
-	})
-	.catch((err) => console.error("Unable to connect to blogs database: ", err));
-
 const sequelizeUsers = new Sequelize({
 	database: "users",
 	dialect: "sqlite",
@@ -73,4 +56,4 @@ sequelizeOrders
     })
     .catch((err) => console.error("Unable to connect to orders database: ", err));
 
-export { sequelizeBlogs, sequelizeUsers, sequelizeProducts, sequelizeOrders };
+export {  sequelizeUsers, sequelizeProducts, sequelizeOrders };

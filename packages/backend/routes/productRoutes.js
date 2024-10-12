@@ -4,7 +4,6 @@ import deleteProduct from "../controllers/access/controls/product/deleteProduct.
 import getAllProducts from "../controllers/access/controls/product/getAllProducts.js";
 import updateProduct from "../controllers/access/controls/product/updateProduct.js";
 import getProduct from "../controllers/access/controls/product/getProduct.js";
-import buyProduct from "../controllers/access/controls/product/buyProduct.js";
 import getSellerProducts from "../controllers/access/controls/product/getSellerProducts.js";
 import tokenVerification from "../security/authentication.js";
 import upload from "../security//upload.js"; // Import the multer middleware

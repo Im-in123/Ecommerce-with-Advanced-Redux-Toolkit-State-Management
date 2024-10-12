@@ -11,7 +11,7 @@ import Register from "./pages/auth/Register";
 // Import product components
 import AllProducts from "./pages/products/AllProducts";
 import CreateProduct from "./pages/products/CreateProduct";
-import UserSpecificProducts from "./pages/products/UserSpecificProducts";
+
 import UpdateProduct from "./pages/products/UpdateProduct";
 
 import "./App.css";
@@ -24,8 +24,7 @@ import AdminUsersList from "./pages/admin/AdminUsersList";
 import AdminCreateUser from "./pages/admin/AdminCreateUser";
 import AdminUpdateUser from "./pages/admin/AdminUpdateUser";
 import LandingPage from "./pages/LandingPage";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+
 import CartPage from "./pages/cart/CartPage"
 import OrdersPage from "./pages/cart/OrdersPage";
 
