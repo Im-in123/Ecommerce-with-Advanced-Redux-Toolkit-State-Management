@@ -56,6 +56,7 @@ yarn install  # Install backend dependencies
 cd /packages/backend
 cp .env.example .env  # Copy the example environment variables file . After that edit the .env file to set the appropriate values for your environment
 mkdir -p uploads  #create uploads directory if it doesnt already exist in backend directory
+
 # Now cd back to your root folder
 yarn backend:serve  # Start the backend server
 yarn frontend:dev  # Start the frontend application
