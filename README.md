@@ -1,7 +1,7 @@
 # eCommerce Application
 
 ## Overview
-This eCommerce application is built with React and Redux Toolkit for the frontend and uses Sequelize with SQLite for the backend. The application allows users to manage products, orders, and user accounts, supporting functionalities such as user registration, role management, search and add to cart, checkout and product management.
+This eCommerce application is built with React and Redux Toolkit for the frontend and uses Sequelize with SQLite for the backend. The application allows users to manage products, orders, and user accounts, supporting functionalities such as user registration, role management, search, add to cart, checkout and product management.
 
 ## Technologies Used
 
