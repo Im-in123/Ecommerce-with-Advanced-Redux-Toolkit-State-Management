@@ -35,14 +35,19 @@ const AdminUpdateUser = () => {
     const handleUpdate = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
+        try {
             await updateUser({ userId, ...formState }).unwrap();
             toast.success("Updated user sucessfully!")
             navigate(`/admin/${userId}`);
         } catch (error) {
             console.error("Error updating user:", error);
+            toast.error(error?.error);
             toast.error(error?.data?.error)
             toast.error(error?.data?.message )
         }
+    } catch (error) {
+        toast.error(error)
+    }
     };
 
     // Handle input change for form fields

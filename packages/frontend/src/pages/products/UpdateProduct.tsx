@@ -67,6 +67,7 @@ const UpdateProduct = ({ isAuthenticated }) => {
             navigate(`/products/${productId}`);
         } catch (error) {
             console.error("Failed to update product", error);
+            toast.error(error?.error);
             toast.error(error?.data?.error)
             toast.error(error?.data?.message )
         }

@@ -17,6 +17,7 @@ const AdminDeleteUser = ({ userId }) => {
                 navigate("/admin");
             } catch (error) {
                 console.error("Failed to delete the user:", error);
+                toast.error(error?.error);
                 toast.error(error?.data?.error)
                 toast.error(error?.data?.message )
             }

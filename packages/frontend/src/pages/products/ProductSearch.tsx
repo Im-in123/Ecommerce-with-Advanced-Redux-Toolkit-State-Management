@@ -19,7 +19,7 @@ const ProductSearch= ({ isAuthenticated, authState }: { isAuthenticated: boolean
 
     // Function to handle adding product to cart
     const handleAddToCart = (product) => {
-        dispatch(addToCart({ productId: product.id, name: product.name, price: product.price, order_quantity: 1, imageUrl: product.imageUrl }));
+        dispatch(addToCart({ productId: product.id, name: product.name, price: product.price, quantity: product.quantity, order_quantity:1, imageUrl:product.imageUrl }));
         toast.success("Added to cart!");
     };
 

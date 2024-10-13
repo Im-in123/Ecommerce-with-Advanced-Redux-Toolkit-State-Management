@@ -30,6 +30,7 @@ const AdminCreateUser = ({ isAuthenticated, authState }: { isAuthenticated: bool
             navigate("/admin");
         } catch (error) {
             console.error("Error creating user:", error);
+            toast.error(error?.error);
             toast.error(error?.data?.error)
             toast.error(error?.data?.message )
         }

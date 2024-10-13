@@ -22,9 +22,17 @@ const adminGetUsers = async (req, res) => {
 
         // Retrieve all users
         const users = await UserModel.findAll(); // Adjust as necessary for your ORM
-
+     // Exclude sensitive information
+     const safeUsers = users.map(({ id, username, email, role, createdAt, updatedAt }) => ({
+        id,
+        username,
+        email,
+        role,
+        createdAt,
+        updatedAt,
+    }));
         // Respond with the list of users
-        return res.status(200).json({ users, ok: true });
+        return res.status(200).json({ users:safeUsers, ok: true });
     } catch (error) {
         console.error("Error retrieving users:", error);
         return res.status(500).json({ message: "Server Error" });
