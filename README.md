@@ -24,6 +24,9 @@ This eCommerce application is built with React and Redux Toolkit for the fronten
 - Product Management (Create, Read, Update, Delete)
 - Order Management (Checkout, View Orders)
 - User roles with different special operation permissions (Admin, Seller, Shopper)
+- Add To Cart And View Cart Functionality
+- Persistence For Cart Items and Auth After Reloads(Redux-Persist Package).
+-
 
 ## Getting Started
 
