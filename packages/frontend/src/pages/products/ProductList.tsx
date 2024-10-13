@@ -37,7 +37,7 @@ const ProductList = ({ isAuthenticated, authState }: { isAuthenticated: boolean;
          {products.length === 0 && <p>No Products Found!</p>}
         <div className="product-list">
            
-            {products?.map((product) => (
+            {products?.slice().reverse().map((product) => (
                 <div key={product.id} className="product-item">
                     <Link to={`/products/${product.id}`} className="product-link">
                         <img 

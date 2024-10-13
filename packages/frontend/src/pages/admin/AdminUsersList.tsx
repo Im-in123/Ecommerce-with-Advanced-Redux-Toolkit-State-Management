@@ -35,7 +35,7 @@ const AdminUsersList = ({ isAuthenticated, authState }: { isAuthenticated: boole
                 <div className="no-users-message">No users found.</div>
             ) : (
                 <ul className="admin-users-list">
-                    {users.map((user) => (
+                    {users?.slice().reverse().map((user) => (
                         <li key={user.id}>
                             <Link to={`/admin/${user.id}`}>
                                 <span>Username: {user.username}</span> | 

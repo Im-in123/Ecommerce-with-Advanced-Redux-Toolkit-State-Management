@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFetchOrdersQuery } from '../../services/cart/cartSliceAPI';   
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -6,8 +6,11 @@ import "../../styles/OrdersPage.css";
 import { BASE_URL } from '../../constants';
 
 const OrdersPage = () => {
-    const { data: orders, error, isLoading } = useFetchOrdersQuery();
+    const { data: orders, error, isLoading, refetch } = useFetchOrdersQuery();
     console.log("orders:", orders); // Debugging: Log the orders data
+    useEffect(() => {
+        refetch();  // Trigger refetch on component mount
+    }, [refetch]);
 
     return (
         <>
@@ -37,7 +40,7 @@ const OrdersPage = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orders.map((order) => (
+                                {orders?.slice().reverse().map((order) => (
                                     <tr key={order.id}>
                                         <td>{order.id}</td>
                                         <td>
