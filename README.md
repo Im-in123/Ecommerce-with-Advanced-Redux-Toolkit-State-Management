@@ -62,26 +62,3 @@ yarn backend:serve  # Start the backend server
 yarn frontend:dev  # Start the frontend application
 ```
 
-## API Endpoints on Frontend
-
-### Users
-- **POST /users**: Create a new user.
-- **GET /users**: Retrieve all users.
-- **GET /users/:id**: Retrieve a specific user by ID.
-- **PUT /users/:id**: Update a user by ID.
-- **DELETE /users/:id**: Delete a user by ID.
-- **DELETE /users/search**: Search a User.
-
-### Products
-- **POST /products**: Create a new product.
-- **GET /products**: Retrieve all products.
-- **GET /products/:id**: Retrieve a specific product by ID.
-- **PUT /products/:id**: Update a product by ID.
-- **DELETE /products/:id**: Delete a product by ID.
-- **SEARCH /products/search**: Search a Product.
-
-### Orders
-- **POST /checkout**: Create a new product order for shopper.
-- **GET /orders**: Retrieve all product orders from shopper.
- 
- 
