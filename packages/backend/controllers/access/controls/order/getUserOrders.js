@@ -1,10 +1,9 @@
 import OrderModel from "../../../../models/OrderModel.js"; // Import OrderModel
 import dotenv from "dotenv";
-import jsonwebtoken from "jsonwebtoken";
+
 
 dotenv.config();
-const config = process.env;
-const jwt = jsonwebtoken;
+ 
 
 const getUserOrders = async (req, res) => {
     try {

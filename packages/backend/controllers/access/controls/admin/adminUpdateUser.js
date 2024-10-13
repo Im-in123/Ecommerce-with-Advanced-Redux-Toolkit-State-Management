@@ -3,12 +3,9 @@
 import UserModel from "../../../../models/UserModel.js";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-import jsonwebtoken from "jsonwebtoken";
 
 dotenv.config();
-const config = process.env;
-const jwt = jsonwebtoken;
-
+ 
 const adminUpdateUser = async (req, res) => {
     console.log("in admin update user");
 

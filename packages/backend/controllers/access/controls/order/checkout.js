@@ -1,11 +1,10 @@
 import OrderModel from "../../../../models/OrderModel.js"; // Import OrderModel
 import ProductModel from "../../../../models/ProductModel.js"; // Import ProductModel to fetch product details
 import dotenv from "dotenv";
-import jsonwebtoken from "jsonwebtoken";
+
 
 dotenv.config();
-const config = process.env;
-const jwt = jsonwebtoken;
+ 
 
 const checkout = async (req, res) => {
     try {

@@ -8,6 +8,7 @@ import adminUpdateUser from "../controllers/access/controls/admin/adminUpdateUse
 import tokenVerification from "../security/authentication.js";
 import authWithUserMiddleware from "../security/authwithUserMiddleware.js";
 import cookieAuthMiddleware from "../security/cookieAuthMiddleware.js";
+import adminUserSearch from "../controllers/access/controls/admin/adminUserSearch.js";
 
 const adminRoutes = Router({ mergeParams: true });
 
@@ -37,4 +38,8 @@ adminRoutes.put("/admin/user/update/:userId",
      // cookieAuthMiddleware,
     authWithUserMiddleware,
      adminUpdateUser);
+
+adminRoutes.get("/admin/users/search", 
+        authWithUserMiddleware,
+        adminUserSearch);
 export default adminRoutes;

@@ -4,7 +4,7 @@ import type {
     ProductDeleteRequest,
     ProductModel,
     ProductResponse,
-    ProductUpdateRequest,
+    
 } from "./types";
 import { BASE_URL } from "../../constants";
 import type { RootState } from "../../store";
@@ -26,6 +26,10 @@ export const productApi = createApi({
     refetchOnReconnect: true,
     tagTypes: ["ProductModel"],
     endpoints: (builder) => ({
+        searchProducts: builder.query<ProductModel[], string>({
+            query: (searchTerm) => `products/products/search?searchTerm=${searchTerm}`,
+            transformResponse: (response: { products: ProductModel[] }) => response.products,
+          }),
         getAllProducts: builder.query<ProductModel[], void>({
             query: () => "products/products/get-all", // This matches /api/products
             transformResponse: (response: { products: ProductModel[] }) => response.products,
@@ -85,6 +89,7 @@ export const {
     useCreateProductMutation,
     useDeleteProductMutation,
     useUpdateProductMutation,
+    useSearchProductsQuery,
 } = productApi;
 
 // Don't forget to export the reducer

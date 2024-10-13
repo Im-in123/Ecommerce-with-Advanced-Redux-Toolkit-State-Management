@@ -1,12 +1,11 @@
 import ProductModel from "../../../../models/ProductModel.js";
 import dotenv from "dotenv";
-import jsonwebtoken from "jsonwebtoken";
+
 import multer from 'multer';
 import fs from 'fs';
 
 dotenv.config();
-const config = process.env;
-const jwt = jsonwebtoken;
+ 
 
 // Create Multer upload instance
 const upload = multer({ dest: 'uploads/' });

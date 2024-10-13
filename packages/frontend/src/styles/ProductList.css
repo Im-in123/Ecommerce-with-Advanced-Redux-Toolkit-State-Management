@@ -36,3 +36,13 @@
     color: #28a745;
     margin-top: 5px;
 }
+
+.product-list .search-bar {
+    margin-bottom: 20px;
+}
+
+.product-list .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}

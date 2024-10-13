@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import "../styles/Header.css";
 import { useLogoutMutation } from "../services/auth/authSlice";
 import { useAppSelector } from "../store";
 import { selectCartCount } from "../services/cart/cartSlice";
 import { FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import { clearCart } from '../services/cart/cartSlice';
-import { persistor,  useAppDispatch } from '../store';
- 
+import { persistor, useAppDispatch } from '../store';
+
 const Header = () => {
     const { user, token } = useAppSelector((state) => state.auth); // Get the auth state
     const cartCount = useAppSelector(selectCartCount); // Get the cart item count
+    const location = useLocation(); // Get the current location
 
     // Determine if the user is authenticated
     const isAuthenticated = !!(user && token);
@@ -25,12 +26,15 @@ const Header = () => {
         // Dispatch the action to clear the cart
         dispatch(clearCart());
 
-    // Purge the persisted state
-    persistor.purge();
+        // Purge the persisted state
+        persistor.purge();
         navigate("/auth/login", {
             replace: true, // Replace the current entry in the history stack
         });
     };
+
+    // Function to determine if the link is active
+    const isActive = (path) => location.pathname === path ? 'active' : '';
 
     return (
         <header className="header">
@@ -39,15 +43,20 @@ const Header = () => {
 
                 {/* Conditional rendering based on user role */}
                 {isAuthenticated && user.role !== "admin" && (
-                    <Link to="/products">Products</Link>
+                    <Link to="/products" className={isActive('/products')}>Products</Link>
                 )}
                 {isAuthenticated && user.role === "admin" && (
-                    <Link to="/admin">Users</Link>
+                    <>
+                        <Link to="/admin" className={isActive('/admin')}>Users</Link>
+                        <Link to="/admin/search" className={isActive('/admin/search')}>Search Users</Link>
+                    </>
                 )}
                 {isAuthenticated && user.role === "shopper" && (
-                    <Link to="/orders">Orders</Link>
+                    <Link to="/orders" className={isActive('/orders')}>Orders</Link>
                 )}
-
+                {isAuthenticated && user.role !== "admin" && (
+                    <Link to="/products/search" className={isActive('/products/search')}>Search Products</Link>
+                )}
                 <div className="auth-links">
                     {isAuthenticated ? (
                         <>
@@ -78,8 +87,8 @@ const Header = () => {
                         </>
                     ) : (
                         <>
-                            <Link to="/auth/login">Login</Link>
-                            <Link to="/auth/register">Register</Link>
+                            <Link to="/auth/login" className={isActive('/auth/login')}>Login</Link>
+                            <Link to="/auth/register" className={isActive('/auth/register')}>Register</Link>
                         </>
                     )}
                 </div>

@@ -94,6 +94,13 @@ export const authEcomerceApi = createApi({
 			transformErrorResponse: (response) => response.data as ErrorResponse,
 			providesTags: ["User"],
 		}),
+		adminSearchUsers: builder.query<User[], string>({
+            query: (searchTerm) => `admin/admin/users/search?searchTerm=${searchTerm}`,
+			transformResponse: (response: { users: User[] }) => response.users,
+			transformErrorResponse: (response) => response.data as ErrorResponse,
+			providesTags: ["User"],
+        }),
+		
 	}),
 });
 
@@ -106,7 +113,8 @@ export const {
 	useAdminUpdateUserMutation, 
 	useAdminDeleteUserMutation, 
 	useAdminGetUsersQuery, 
-	useAdminGetUserQuery 
+	useAdminGetUserQuery,
+	useAdminSearchUsersQuery,
 } = authEcomerceApi;
 
 // Create an auth slice for managing user authentication state

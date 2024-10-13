@@ -105,3 +105,9 @@
 .dropdown button:hover {
     background-color: #357ABD;
 }
+
+.navbar a.active {
+    text-decoration: underline;
+    font-weight: bold;
+    color: #FFD700; /* Change to any color you prefer for the active link */
+}

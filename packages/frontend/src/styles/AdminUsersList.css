@@ -54,3 +54,13 @@
     color: #7f8c8d;
     margin-top: 20px;
 }
+
+.admin-users-list-container .search-bar {
+    margin-bottom: 20px;
+}
+
+.admin-users-list-container .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}

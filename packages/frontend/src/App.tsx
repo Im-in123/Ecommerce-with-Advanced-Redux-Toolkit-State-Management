@@ -20,6 +20,8 @@ import AdminUpdateUser from "./pages/admin/AdminUpdateUser";
 import LandingPage from "./pages/LandingPage";
 import CartPage from "./pages/cart/CartPage";
 import OrdersPage from "./pages/cart/OrdersPage";
+import ProductSearch from "./pages/products/ProductSearch";
+import AdminUserSearch from "./pages/admin/AdminUserSearch";
 
 const App = () => {
     // Get user and token from Redux state
@@ -75,6 +77,10 @@ const App = () => {
                         return { username: params.username, productId: params.productId };
                     },
                 },
+                {
+                    path: "search",
+                    element: <ProductSearch isAuthenticated={isAuthenticated} authState={authState} />,
+                },
             ],
         },
         {
@@ -104,6 +110,10 @@ const App = () => {
                 {
                     path: ":userId/update",
                     element: <AdminUpdateUser isAuthenticated={isAuthenticated} authState={authState} />,
+                },
+                {
+                    path: "search",
+                    element: <AdminUserSearch isAuthenticated={isAuthenticated} authState={authState} />,
                 },
             ],
         },

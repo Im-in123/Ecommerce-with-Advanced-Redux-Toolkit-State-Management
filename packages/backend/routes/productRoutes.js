@@ -9,6 +9,7 @@ import tokenVerification from "../security/authentication.js";
 import upload from "../security//upload.js"; // Import the multer middleware
 import authWithUserMiddleware from "../security/authwithUserMiddleware.js";
 import cookieAuthMiddleware from "../security/cookieAuthMiddleware.js";
+import searchProducts from "../controllers/access/controls/product/searchProducts.js";
 
 
 const productControlRoutes = Router({ mergeParams: true });
@@ -47,5 +48,7 @@ productControlRoutes.get("/products/seller",
     // tokenVerification,
     authWithUserMiddleware,
      getSellerProducts);
-
+productControlRoutes.get("/products/search", 
+        authWithUserMiddleware,
+        searchProducts);
 export default productControlRoutes;
