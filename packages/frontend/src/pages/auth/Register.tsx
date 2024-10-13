@@ -33,9 +33,9 @@ const Register = ({
                             	register(registerFormData)
                                 	.then((data) => {
                                     	if (data?.data?.ok) {
-                                        	return navigate("/", {
-                                            	replace: true,
-                                        	});
+											toast.success("Registration Sucessful")
+											toast.success("Login now!")
+                                        	return navigate("/auth/login");
                                     	}
 										toast.error("Invalid credentials!");
                                 	})

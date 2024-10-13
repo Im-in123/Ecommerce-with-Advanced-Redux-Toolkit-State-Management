@@ -30,7 +30,7 @@ const OrdersPage = () => {
                         <table className="orders-table">
                             <thead>
                                 <tr>
-                                    <th>Order ID</th>
+                                    {/* <th>Order N.</th> */}
                                     <th>Product</th>
                                     <th>Quantity</th>
                                     <th>Total Price</th>
@@ -40,9 +40,9 @@ const OrdersPage = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {orders?.slice().reverse().map((order) => (
+                                {orders?.slice().reverse().map((order,index) => (
                                     <tr key={order.id}>
-                                        <td>{order.id}</td>
+                                        <td>{orders.length - index}</td>
                                         <td>
                                             {order.orderItems.map((item) => (
                                                 <div key={item.productId}>

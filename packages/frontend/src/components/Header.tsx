@@ -51,12 +51,14 @@ const Header = () => {
                         <Link to="/admin/search" className={isActive('/admin/search')}>Search Users</Link>
                     </>
                 )}
+                  {isAuthenticated && user.role !== "admin" && (
+                    <Link to="/products/search" className={isActive('/products/search')}>Search Products</Link>
+                )}
+                
                 {isAuthenticated && user.role === "shopper" && (
                     <Link to="/orders" className={isActive('/orders')}>Orders</Link>
                 )}
-                {isAuthenticated && user.role !== "admin" && (
-                    <Link to="/products/search" className={isActive('/products/search')}>Search Products</Link>
-                )}
+              
                 <div className="auth-links">
                     {isAuthenticated ? (
                         <>
