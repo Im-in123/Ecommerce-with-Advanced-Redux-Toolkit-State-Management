@@ -53,7 +53,7 @@ const login = async (req, res) => {
 		res.cookie("advanced-state-management-user", token, {
 			httpOnly: true,
 			signed: true,
-			secure: true,
+			secure: false,
 			maxAge: 60 * 60 * 24,
 			sameSite: "None",
 			partitioned: true,

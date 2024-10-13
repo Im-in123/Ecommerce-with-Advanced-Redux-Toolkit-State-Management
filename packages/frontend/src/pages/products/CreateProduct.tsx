@@ -42,20 +42,20 @@ const CreateProduct = ({
                 .then((payload) => {
                     if (payload.data?.ok !== undefined && payload.data?.message !== undefined) {
                         if (payload.data?.ok) {
-                            alert(payload.data?.message);
+                            toast.success(payload.data?.message);
                             navigate("/products");
                             return;
                         }
                     }
                     const error = payload.error as ErrorResponse | undefined;
-                    alert(error?.message);
+                    toast.error(error?.message);
                 })
                 .catch((error) => {
                     console.log("rejected", error);
-                    alert("Something went wrong");
+                    toast.error("Something went wrong");
                 });
         } catch (err) {
-            alert(`Failed to create product with error: ${err}`);
+            toast.error(`Failed to create product with error: ${err}`);
         }
     };
 

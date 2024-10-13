@@ -12,21 +12,9 @@ const adminDeleteUser = async (req, res) => {
     console.log("in admin delete user");
 
     try {
-        // Check if the token exists in signed cookies
-        const token = req.signedCookies["advanced-state-management-user"];
-
-        // Verify the JWT token
-        let adminUser;
-        try {
-            adminUser = jwt.verify(token, config.TOKEN);
-        } catch (err) {
-            return res.status(401).json({
-                error: "Unauthorized",
-                message: "Invalid cookie or cookie not found!",
-                status: 401,
-                ok: false,
-            });
-        }
+        
+        let adminUser = req.user;
+        
 
         // Ensure the user has an admin role
         if (adminUser.role !== "admin") {

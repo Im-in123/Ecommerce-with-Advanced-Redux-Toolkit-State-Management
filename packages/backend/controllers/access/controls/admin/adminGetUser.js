@@ -12,22 +12,9 @@ const adminGetUser = async (req, res) => {
     console.log("in admin get user");
 
     try {
-        // Check if the token exists in signed cookies
-        const token = req.signedCookies["advanced-state-management-user"];
-
-        // Verify the JWT token
-        let user;
-        try {
-            user = jwt.verify(token, config.TOKEN);
-        } catch (err) {
-            return res.status(401).json({
-                error: "Unauthorized",
-                message: "Invalid cookie or cookie not found!",
-                status: 401,
-                ok: false,
-            });
-        }
-
+        
+        let user = req.user;
+        
         // Ensure the user making the request is an admin
         if (user.role !== "admin") {
             return res.status(403).json({ message: "Access denied. Admins only." });

@@ -9,21 +9,9 @@ const jwt = jsonwebtoken;
 
 const checkout = async (req, res) => {
     try {
-        // Check if the token exists in signed cookies
-        const token = req.signedCookies["advanced-state-management-user"];
-
-        // Verify the JWT token
-        let user;
-        try {
-            user = jwt.verify(token, config.TOKEN);
-        } catch (err) {
-            return res.status(401).json({
-                error: "Unauthorized",
-                message: "Invalid cookie or cookie not found!",
-                status: 401,
-                ok: false,
-            });
-        }
+   
+        let user = req.user;
+       
 
         const userId = user.userId ?? null;
 

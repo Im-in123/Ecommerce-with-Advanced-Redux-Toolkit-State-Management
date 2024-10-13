@@ -8,32 +8,13 @@ const jwt = jsonwebtoken;
 
 const getUserOrders = async (req, res) => {
     try {
-        // Check if the token exists in signed cookies
-        const token = req.signedCookies["advanced-state-management-user"];
-
-        // Verify the JWT token
-        let user;
-        try {
-            user = jwt.verify(token, config.TOKEN);
-        } catch (err) {
-            return res.status(401).json({
-                error: "Unauthorized",
-                message: "Invalid cookie or cookie not found!",
-                status: 401,
-                ok: false,
-            });
-        }
+       
+        let user = req.user;
+      
 
         const userId = user.userId ?? null;
 
-        if (!userId) {
-            return res.status(401).json({
-                error: "Unauthorized or cookie has expired",
-                message: "Cookie is invalid",
-                status: 401,
-                ok: false,
-            });
-        }
+       
 
         // Fetch orders for the user
         const orders = await OrderModel.findAll({

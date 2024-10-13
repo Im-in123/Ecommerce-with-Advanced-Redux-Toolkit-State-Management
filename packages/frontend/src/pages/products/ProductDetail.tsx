@@ -52,7 +52,7 @@ const ProductDetail = ({ isAuthenticated, authState }) => {
             )}
 
             {/* Add to Cart button for all users */}
-            <button className="cart-button" onClick={handleAddToCart}>Add to Cart</button>
+            {authState?.user?.role === "shopper" && <button className="cart-button" onClick={handleAddToCart}>Add to Cart</button>}
         </div>
     );
 };

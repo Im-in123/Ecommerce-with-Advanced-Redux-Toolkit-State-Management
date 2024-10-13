@@ -48,7 +48,8 @@ const ProductList = ({ isAuthenticated, authState }: { isAuthenticated: boolean;
                         <h2>{product.name}</h2>
                     </Link>
                     <p className="product-price">${product.price}</p>
-                    <button className="cart-button" onClick={()=>handleAddToCart(product)}>Add to Cart</button>
+                    {authState?.user?.role === "shopper" && <button className="cart-button" onClick={()=>handleAddToCart(product)}>Add to Cart</button>
+                }
                 </div>
             ))}
         </div>
