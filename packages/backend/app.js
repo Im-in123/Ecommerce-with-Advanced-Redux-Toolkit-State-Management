@@ -27,7 +27,7 @@ const corsOptions = {
 		"http://localhost:4173",
 		"http://[::1]:4173",
 		"http://[::1]:5173",
-		"https://reimagined-guide-q6x74vpgrr4f99q-5173.app.github.dev",
+		"https://reimagined-guide-q6x74vpgrr4f99q-5173.app.github.dev",//replace with your frontend url
 	],
 	credentials: true, //included credentials as true
 	preflightContinue: false,
