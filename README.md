@@ -1,7 +1,7 @@
 # eCommerce Application
 
 ## Overview
-This eCommerce application is built with React and Redux Toolkit for the frontend and uses Sequelize with SQLite for the backend. The application allows users to manage products, orders, and user accounts, supporting functionalities such as user registration, role management, and product management.
+This eCommerce application is built with React and Redux Toolkit for the frontend and uses Sequelize with SQLite for the backend. The application allows users to manage products, orders, and user accounts, supporting functionalities such as user registration, role management, search and add to cart, checkout and product management.
 
 ## Technologies Used
 
@@ -23,6 +23,7 @@ This eCommerce application is built with React and Redux Toolkit for the fronten
 - Role Management (Admin, Seller, Shopper) with Create, Read, Update, Delete
 - Product Management (Create, Read, Update, Delete)
 - Order Management (Checkout, View Orders)
+- User and Product Search Functionality
 - User roles with different special operation permissions (Admin, Seller, Shopper)
 - Add To Cart And View Cart Functionality
 - Persistence For Cart Items and Auth After Reloads(Redux-Persist Package).
@@ -68,6 +69,7 @@ yarn frontend:dev  # Start the frontend application
 - **GET /users/:id**: Retrieve a specific user by ID.
 - **PUT /users/:id**: Update a user by ID.
 - **DELETE /users/:id**: Delete a user by ID.
+- **DELETE /users/search**: Search a User.
 
 ### Products
 - **POST /products**: Create a new product.
@@ -75,6 +77,7 @@ yarn frontend:dev  # Start the frontend application
 - **GET /products/:id**: Retrieve a specific product by ID.
 - **PUT /products/:id**: Update a product by ID.
 - **DELETE /products/:id**: Delete a product by ID.
+- **SEARCH /products/search**: Search a Product.
 
 ### Orders
 - **POST /checkout**: Create a new product order for shopper.
