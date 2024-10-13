@@ -74,7 +74,7 @@ yarn frontend:dev  # Start the frontend application
 - **DELETE /products/:id**: Delete a product by ID.
 
 ### Orders
-- **POST /orders**: Create a new product order for shopper.
+- **POST /checkout**: Create a new product order for shopper.
 - **GET /orders**: Retrieve all product orders from shopper.
  
  
