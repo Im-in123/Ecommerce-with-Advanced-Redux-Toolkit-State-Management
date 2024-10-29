@@ -49,7 +49,7 @@ yarn install  # Install all required dependencies for the project
  
 cd /packages/frontend
 yarn install  # Install frontend dependencies
-change the BASE_URL in frontend/src/constant.js to the url of your running backend
+change the BASE_URL in frontend/src/constants.ts to the url of your running backend
 cd /packages/backend
 yarn install  # Install backend dependencies
 
