@@ -49,13 +49,14 @@ yarn install  # Install all required dependencies for the project
  
 cd /packages/frontend
 yarn install  # Install frontend dependencies
-change the BASE_URL in frontend/src/constants.ts to the url of your running backend
-cd /packages/backend
+change the BASE_URL in frontend/src/constants.ts to the url of your running backend . The url shoul not end in a trailing slash. So remove the slash.
+cd packages/backend
 yarn install  # Install backend dependencies
 
-cd /packages/backend
+cd packages/backend
 cp .env.example .env  # Copy the example environment variables file . After that edit the .env file to set the appropriate values for your environment
 mkdir -p uploads  #create uploads directory if it doesnt already exist in backend directory
+Add the url of the running frontend in backend/app.js, add it to the cors origin. The url should not end with a slash, so remove the slash. Always restart the backend after any changes for it to reflect.
 
 # Now cd back to your root folder
 yarn backend:serve  # Start the backend server
